@@ -1,0 +1,25 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 	xmlns:p="http://www.springframework.org/schema/p"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd 
+        ">
+	
+	
+
+	<bean id="dao" name="dao" class="fr.epita.iam.services.IdentityJDBCDAO" />
+
+    <!-- todo : use SpringPropertiesUtil Something to load the placeholders values below: -->
+   	<bean id="configProperties" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+    	<property name="location" value="classpath:/test.properties"/>
+	</bean>
+	<bean id="dataSourceBean" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${jdbc.driver.name}" />
+		<property name="url" value="${jdbc.connection.string}" />
+		<property name="username" value="${jdbc.connection.username}" />
+		<property name="password" value="${jdbc.connection.password}" />
+	</bean>
+
+
+
+</beans>
