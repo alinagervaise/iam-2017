@@ -13,6 +13,9 @@ public class Identity {
 	private String displayName;
 	private String email;
 	
+	public Identity(){
+		
+	}
 	
 	/**
 	 * @param uid
