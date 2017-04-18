@@ -39,8 +39,6 @@ import fr.epita.iam.services.IdentityJDBCDAO;
 @ContextConfiguration(locations={"/applicationContext.xml"})
 public class TestHibernateHomework {
 	
-	@Inject
-	SessionFactory sFactory;	
 	
 	@Inject
 	IdentityHibernateDAO identityDao;
@@ -51,19 +49,39 @@ public class TestHibernateHomework {
 
 	@Test
 	public void testHibernate() throws SQLException{
-		Session session = sFactory.openSession();
 		
 		List<Identity> identities = identityDao.readAll();
 		LOGGER.info(identities);
 		assertEquals(identities.size(), 0);
-		
-		Identity identity = new Identity(Long.getLong("656455"), "Thomas", "thomas.broussard@gmail.com");
+	
+		Identity identity = new Identity("Thomas", "thomas.broussard@gmail.com");
+
 		identityDao.create(identity);
 		
 		identities = identityDao.readAll();
 		LOGGER.info(identities);
 		assertEquals(identities.size(), 1);
 		
+		Identity identity2 = new Identity("Thomas2", "thomas2.broussard@gmail.com");
+		identityDao.create(identity2);
+		identities = identityDao.readAll();
+		assertEquals(identities.size(), 2);
+		LOGGER.info(identities);
+		
+		
+		identity2.setDisplayName("Thoms");
+		identityDao.update(identity2);		
+		identities = identityDao.readAll();
+		assertEquals(identities.size(), 2);
+		LOGGER.info(identities);
+		
+		identityDao.delete(identity2);
+		identities = identityDao.readAll();
+		assertEquals(identities.size(), 1);
+		LOGGER.info(identities);
+		
+		
+	
 		
 		
 	}

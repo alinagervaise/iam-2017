@@ -30,8 +30,13 @@ public class Identity {
 	private String email;
 	
 	public Identity(){
-		
+		super();
 	}
+	public Identity(String displayName, String email) {
+		this.displayName = displayName;
+		this.email = email;
+	}
+	
 	
 	/**
 	 * @param uid
