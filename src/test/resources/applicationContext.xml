@@ -8,6 +8,7 @@
 	
 
 	<bean id="dao" name="dao" class="fr.epita.iam.services.IdentityJDBCDAO" />
+	<bean id="identityDao" name="identityDao" class="fr.epita.iam.services.IdentityHibernateDAO" />
 
     <!-- todo : use SpringPropertiesUtil Something to load the placeholders values below: -->
    	<bean id="configProperties" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">

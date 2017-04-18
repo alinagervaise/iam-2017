@@ -46,8 +46,8 @@ public class IdentityHibernateDAO implements IdentityDAO {
 	public List<Identity> readAll() {
 		Session session = sessionFactory.openSession();
 		@SuppressWarnings("unchecked")
-		List<Identity>  result = (List<Identity>)session.createCriteria(Identity.class)
-				.setResultTransformer(Criteria.ROOT_ENTITY);
+		List<Identity>  result = (List<Identity>)session  .createCriteria(Identity.class)
+                .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
 		session.close();
 		return result;
 	}

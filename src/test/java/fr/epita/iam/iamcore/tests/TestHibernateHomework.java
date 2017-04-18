@@ -58,7 +58,7 @@ public class TestHibernateHomework {
 		assertEquals(identities.size(), 0);
 		
 		Identity identity = new Identity(Long.getLong("656455"), "Thomas", "thomas.broussard@gmail.com");
-		session.saveOrUpdate(identity);
+		identityDao.create(identity);
 		
 		identities = identityDao.readAll();
 		LOGGER.info(identities);
