@@ -4,7 +4,6 @@
 package fr.epita.iam.services;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,7 +12,6 @@ import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.inject.Named;
 import javax.sql.DataSource;
 
 import org.apache.logging.log4j.LogManager;
@@ -67,7 +65,7 @@ public class IdentityJDBCDAO {
 		ResultSet rs = pstmt_select.executeQuery();
 		while (rs.next()) {
 			String displayName = rs.getString("IDENTITIES_DISPLAYNAME");
-			String uid = String.valueOf(rs.getString("IDENTITIES_UID"));
+			Long uid = Long.getLong(rs.getString("IDENTITIES_UID"));
 			String email = rs.getString("IDENTITIES_EMAIL");
 			Date birthDate = rs.getDate("IDENTITIES_BIRTHDATE");
 			Identity identity = new Identity(uid, displayName, email);

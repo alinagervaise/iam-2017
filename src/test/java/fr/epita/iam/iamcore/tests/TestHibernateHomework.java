@@ -25,6 +25,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import fr.epita.iam.datamodel.Identity;
+import fr.epita.iam.services.IdentityHibernateDAO;
 import fr.epita.iam.services.IdentityJDBCDAO;
 
 /**
@@ -36,13 +37,13 @@ import fr.epita.iam.services.IdentityJDBCDAO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"/applicationContext.xml"})
-public class TestHibernate {
+public class TestHibernateHomework {
 	
 	@Inject
 	SessionFactory sFactory;	
 	
 	@Inject
-	IdentityJDBCDAO identityDao;
+	IdentityHibernateDAO identityDao;
 	
 	
 	private static final Logger LOGGER = LogManager.getLogger(TestSpring.class);

@@ -1,16 +1,32 @@
 /**
  * 
  */
-package fr.epita.iam.datamodel; 
+package fr.epita.iam.datamodel;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * @author tbrou
  *
  */
+@Entity
+@Table(name="IDENTITIES")
 public class Identity {
 	
-	private String uid;
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="IDENTITIES_ID")
+	private long uid;
+	
+	@Column(name="IDENTITIES_DIPLAYNAME")
 	private String displayName;
+	
+	@Column(name="IDENTITIES_EMAIL")
 	private String email;
 	
 	public Identity(){
@@ -22,7 +38,7 @@ public class Identity {
 	 * @param displayName
 	 * @param email
 	 */
-	public Identity(String uid, String displayName, String email) {
+	public Identity(long uid, String displayName, String email) {
 		this.uid = uid;
 		this.displayName = displayName;
 		this.email = email;
@@ -32,13 +48,13 @@ public class Identity {
 	/**
 	 * @return the uid
 	 */
-	public String getUid() {
+	public long getUid() {
 		return uid;
 	}
 	/**
 	 * @param uid the uid to set
 	 */
-	public void setUid(String uid) {
+	public void setUid(long uid) {
 		this.uid = uid;
 	}
 	/**

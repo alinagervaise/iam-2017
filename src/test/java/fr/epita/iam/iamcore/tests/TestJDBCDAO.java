@@ -79,7 +79,7 @@ public class TestJDBCDAO {
 	@Test
 	public void basicTest() throws SQLException{
 		//IdentityJDBCDAO dao = new IdentityJDBCDAO();
-		dao.writeIdentity(new Identity(null, "Thomas Broussard", "thomas.broussard@gmail.com"));
+		dao.writeIdentity(new Identity(0, "Thomas Broussard", "thomas.broussard@gmail.com"));
 		
 	}
 	
